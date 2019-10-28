@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="Nix_____, 闲人的博客"><meta name="description" content="闲人的博客"><title>Leancloud对象 | 闲人的博客</title><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: {"enable":true,"placeholder":"gif"},
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">闲人的博客</div><div class="header-info-subtitle">闲人的博客</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">Leancloud对象</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2016-07-29</span></span></div></header><div class="post-body"><div class="gallery" itemscope itemtype="http://schema.org/ImageGallery"><img class="gallery__img" src="http://images.iamtaoxin.com/leancloud.jpg" itemprop="contentUrl"></div><h2 id="leadcloud数据存储开发指南-三-－Js篇"><span class="heading-link">leadcloud数据存储开发指南(三)－Js篇</span></h2><p>AV.Object 是 LeanStorage 对复杂对象的封装，每个 AV.Object 包含若干属性值对，也称键值对（key-value）。属性的值是与 JSON 格式兼容的数据。通过 REST API 保存对象需要将对象的数据通过 JSON 来编码。这个数据是无模式化的（Schema Free），这意味着你不需要提前标注每个对象上有哪些 key，你只需要随意设置 key-value 对就可以，云端会保存它。</p>
+<p>数据类型：<br>AV.Object 支持以下类型：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">// 该语句应该只声明一次</span><br><span class="line"> var TestObject = AV.Object.extend(&apos;DataTypeTest&apos;);</span><br><span class="line"></span><br><span class="line"> var number = 2014;</span><br><span class="line"> var string = &apos;famous film name is &apos; + number;</span><br><span class="line"> var date = new Date();</span><br><span class="line"> var array = [string, number];</span><br><span class="line"> var object = &#123; number: number, string: string &#125;;</span><br><span class="line"></span><br><span class="line"> var testObject = new TestObject();</span><br><span class="line"> testObject.set(&apos;testNumber&apos;, number);</span><br><span class="line"> testObject.set(&apos;testString&apos;, string);</span><br><span class="line"> testObject.set(&apos;testDate&apos;, date);</span><br><span class="line"> testObject.set(&apos;testArray&apos;, array);</span><br><span class="line"> testObject.set(&apos;testObject&apos;, object);</span><br><span class="line"> testObject.set(&apos;testNull&apos;, null);</span><br><span class="line"> testObject.save().then(function(testObject) &#123;</span><br><span class="line">   // 成功</span><br><span class="line"> &#125;, function(error) &#123;</span><br><span class="line">   // 失败</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></div></figure>
+<p>注：每个 AV.Object 的大小都不应超过 128 KB。如果需要储存更多的数据，建议使用 AV.File。</p>
+<p>构建对象：<br>构建一个AV.Object对象可以使用以下方式：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">// AV.Object.extend(&apos;className&apos;) 所需的参数 className 则表示对应的表名</span><br><span class="line"> // 声明一个类型</span><br><span class="line"> var Todo = AV.Object.extend(&apos;Todo&apos;);</span><br></pre></td></tr></table></div></figure>
+<p>注：每个 id 必须有一个 Class 类名称，这样云端才知道它的数据归属于哪张数据表。</p>
+<p>保存对象：<br>现在我们保存一个 TodoFolder，它可以包含多个 Todo，类似于给行程按文件夹的方式分组。我们并不需要提前去后台创建这个名为 TodoFolder 的 Class 类，而仅需要执行如下代码，云端就会自动创建这个类：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">// 声明类型</span><br><span class="line">var TodoFolder = AV.Object.extend(&apos;TodoFolder&apos;);</span><br><span class="line">// 新建对象</span><br><span class="line">var todoFolder = new TodoFolder();</span><br><span class="line">// 设置名称</span><br><span class="line">todoFolder.set(&apos;name&apos;,&apos;工作&apos;);</span><br><span class="line">// 设置优先级</span><br><span class="line">todoFolder.set(&apos;priority&apos;,1);</span><br><span class="line">todoFolder.save().then(function (todo) &#123;</span><br><span class="line">  console.log(&apos;objectId is &apos; + todo.id);</span><br><span class="line">&#125;, function (error) &#123;</span><br><span class="line">  console.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+<p>创建完成后，打开 控制台 &gt; 存储，点开 TodoFolder 类，就可以看到刚才添加的数据。除了 name、priority（优先级）之外，其他字段都是数据表的内置属性。</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>内置属性</th>
+<th align="center">类型</th>
+<th align="right">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td align="center">String</td>
+<td align="right">该对象唯一的Id标识</td>
+</tr>
+<tr>
+<td>ACL</td>
+<td align="center">ACL</td>
+<td align="right">该对象的权限控制，实际上是一个 JSON 对象，控制台做了展现优化。</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td align="center">Date</td>
+<td align="right">该对象被创建的 UTC 时间，控制台做了针对当地时间的展现优化。</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td align="center">Date</td>
+<td align="right">该对象最后一次被修改的时间</td>
+</tr>
+</tbody></table></div>
+<p>属性名<br>也叫键或 key，必须是由字母、数字或下划线组成的字符串；自定义的属性名，不能以 __（双下划线）开头。<br>属性值<br>可以是字符串、数字、布尔值、数组或字典。</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">以下为系统保留字段，不能作为属性名来使用。</span><br><span class="line">acl             error            pendingKeys</span><br><span class="line">ACL             fetchWhenSave    running</span><br><span class="line">className       id               updatedAt</span><br><span class="line">code            isDataReady      uuid</span><br><span class="line">createdAt       keyValues</span><br><span class="line">description     objectId</span><br></pre></td></tr></table></div></figure>
+<p>使用CQL语法保存对象</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">// 执行 CQL 语句实现新增一个 TodoFolder 对象</span><br><span class="line"> AV.Query.doCloudQuery(&apos;insert into TodoFolder(name, priority) values(&quot;工作&quot;, 1)&apos;).then(function (data) &#123;</span><br><span class="line">   // data 中的 results 是本次查询返回的结果，AV.Object 实例列表</span><br><span class="line">   var results = data.results;</span><br><span class="line"> &#125;, function (error) &#123;</span><br><span class="line">   //查询失败，查看 error</span><br><span class="line">   console.log(error);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></div></figure>
+<hr>
+<p><span class="external-link"><a href="https://leancloud.cn/docs/leanstorage_guide-js.html" target="_blank" rel="noopener">leadcloud</a><i class="fa fa-external-link"></i></span></p>
+</div><footer class="post-footer"><div class="post-end"><span>------ </span><span>本文结束，感谢您的阅读</span><span> ------</span></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="https://iamtaoxin.com/tags/leancloud/">leancloud</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2016/07/31/js%E5%AE%9E%E7%8E%B0%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D/"><i class="fa fa-chevron-left"></i><span>Js实现对象的深度拷贝</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2016/07/28/leancloud%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%972/"><span>Leancloud开发指南2</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#leadcloud数据存储开发指南-三-－Js篇"><span class="toc-number">1.</span> <span class="toc-text">leadcloud数据存储开发指南(三)－Js篇</span></a></li></ol></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://images.iamtaoxin.com/IMG_1096.PNG" alt="avatar"></div><p class="sidebar-ov-author__p">何时归去做个闲人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social__item" href="https://github.com/taosin" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-github"></i></a><a class="sidebar-ov-social__item" href="https://y.qq.com/n/yqq/playlist/7266592096.html#stat=y_new.profile.create_playlist.click&amp;dirid=1" target="_blank" rel="noopener" data-popover="social.music" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-music"></i></a><a class="sidebar-ov-social__item" href="https://segmentfault.com/u/northern" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">sf</span></a><a class="sidebar-ov-social__item" href="https://weibo.com/5164097015/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-weibo"></i></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">33</div><div class="sidebar-ov-state__a--name">归档</div></a><a class="sidebar-ov-state__a categories" href="/categories/"><div class="sidebar-ov-state__a--count">6</div><div class="sidebar-ov-state__a--name">分类</div></a><a class="sidebar-ov-state__a tags" href="/tags/"><div class="sidebar-ov-state__a--count">15</div><div class="sidebar-ov-state__a--name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>你已阅读了 </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Stay Hungry, Stay Foolish!</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.3" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '00abe1fd337c3b50c026',
+    clientSecret: 'c94c275f254abef59d8adfb1b48b89adad016e43',
+    repo: 'taoxindeblog',
+    owner: 'taosin',
+    admin: ['taosin'],
+    distractionFreeMode: 'false',
+    language: 'en'
+  });
+
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>

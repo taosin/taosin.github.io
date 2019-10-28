@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="Nix_____, 闲人的博客"><meta name="description" content="闲人的博客"><title>前端面试知识点 | 闲人的博客</title><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: {"enable":true,"placeholder":"gif"},
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">闲人的博客</div><div class="header-info-subtitle">闲人的博客</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">前端面试知识点</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2018-02-09</span></span></div></header><div class="post-body"><div class="gallery" itemscope itemtype="http://schema.org/ImageGallery"><img class="gallery__img" src="http://images.iamtaoxin.com/0e11af972a262b19c8f38df754c88348.png" itemprop="contentUrl"></div><h5 id="1-CSS盒模型"><span class="heading-link">1. CSS盒模型</span></h5><ul>
+<li><p>css属性：分为W3C标准盒模型和IE标准盒模型。大多数浏览器采用W3C标准模型，而IE中采用微软自己的标准。</p>
+</li>
+<li><p>怪异盒模型：是指 部分浏览器在采用W3C标准的同时还保留了原来的解析模式，这种情况主要表现在IE内核的浏览器中。</p>
+</li>
+<li><p>怪异模式的触发：当不对 <code>Doctype</code> 进行定义时，则会触发怪异模式。</p>
+</li>
+<li><p>标准模式下：一个块的总宽度 = <code>width + margin(左右) + padding(左右) + border(左右)</code> 。</p>
+</li>
+<li><p>怪异模式下：一个块的总宽度 = <code>width + margin(左右)</code> ，因为 <code>width</code> 已经包含了 <code>padding</code> 和 <code>border</code> 值。</p>
+</li>
+</ul>
+<h4 id="2-box-sizing-应用场景"><span class="heading-link">2. box-sizing 应用场景</span></h4><ul>
+<li>语法：box-sizing:content-box || border-box || inherit;</li>
+<li>使用场景： </li>
+</ul>
+<p>1.特殊场景的布局：假设一个场景，设置子类元素的 <code>margin</code> 或者 <code>border</code> 时，可能会撑破父层元素的尺寸，这时我就需要使用 <code>box-sizing: border-box</code> 来讲 <code>border</code> 包含进元素的尺寸中，这样就不会存在撑破父层元素的情况了。<br>2.统一风格的表格元素：表单中有些input展现的还是传统的IE盒模型，带有一些默认的样式，而且在不同平台或者浏览器下的表现不一，造成了表单层展现的差异，此时就可以通过 <code>box-sizing</code> 属性来构建一个风格统一的表单元素。</p>
+<h4 id="3-Flex布局。"><span class="heading-link">3.Flex布局。</span></h4><ul>
+<li>09年W3C提出了Flex布局，可以简便、完整、响应地实现各种页面布局。</li>
+<li>Flex是Flexible Box的缩写，意味“弹性布局”，用来为盒装模型提供最大的灵活性。</li>
+<li>网页布局的传统解决方案，基于盒状模型，依赖 <code>display</code> 属性 + <code>position</code> 属性 + <code>float</code>属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现。</li>
+<li>用法</li>
+</ul>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"># 任何一个容器都可以使用<span class="selector-tag">Flex</span>布局</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 行内元素也可以使用<span class="selector-tag">Flex</span>布局</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># <span class="selector-tag">Webkit</span> 内核的浏览器，必须加上 <span class="selector-tag">-webkit</span> 前缀</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><em>注意，设为 Flex 布局以后，子元素的 <code>float</code> 、<code>clear</code> 和<code>vertical-align</code> 属性将失效。</em></p>
+<ul>
+<li><p>采用Flex布局的元素，都成为 <strong>Flex容器</strong>，所有子元素自动成为容器成员，成为 <strong>Flex项目</strong>。</p>
+</li>
+<li><p>水平的主轴（main axis）和垂直的交叉轴（cross axis）。</p>
+</li>
+<li><p>主轴的开始位置（与边框的交叉点）叫做 <code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</p>
+</li>
+<li><p>属性：</p>
+</li>
+</ul>
+<ol>
+<li>flex-direction: 决定主轴的方向，即排列方向。<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">flex-direction</span>: *row →| row-reverse ←| column ↓| column-reverse ↑;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li>flex-wrap: 决定一条轴线上项目的换行。<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: *nowrap 不换行| wrap 换行第一行在上方| wrap-reverse  换行第一行在下方;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li>flex-flow: flex-direction  和 flex-wrap 的简写。 默认值为 <code>row nowrap</code>。<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">flex-flow</span>: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li>justify-content: 定义项目在主轴上的对齐方式。<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: *flex-start 左对齐| flex-end 右对齐| center 居中| space-between 两端对齐| space-around 每个项目两侧的间隔相等;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li>align-items: 定义项目在交叉轴上的对齐方式。<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: flex-start 起点对齐| flex-end 终点对齐| center 中点对齐| baseline 基线对齐| stretch 占满整个容器的高度;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li>aligin-content: 定义多根轴线的对齐方式。<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">box</span> &#123;</span><br><span class="line">  <span class="attribute">align-content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+</ol>
+<ul>
+<li>项目属性</li>
+</ul>
+<ol>
+<li><p>order: 定义项目的排列属性。数值越小，排列越靠前，默认为0.</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span>&#123;</span><br><span class="line">  <span class="attribute">order</span>: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li><p>flex-grow: 定义项目的放大比例，默认为0，表如果存在剩余空间，也不能放大。</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* default 0 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li><p>flex-shrink: 定义项目的缩小比例，默认为1，表如果空间不足，该项目将缩小。</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  flex-shrink: &lt;number&gt;; /* default 1 */    0则不缩小</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li><p>flex-basis: 定义在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性进行计算主轴是否有多余空间。</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure></li>
+<li><p>flex: 是 <code>flex-grow</code> , <code>flex-shrink</code> 和 <code>flex-basis</code> 的简写， 默认值为 <code>0 1 auto</code>。</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+</li>
+<li><p>align-self: 允许单个项目有与其他项目不一样的对齐方式，可覆盖 <code>align-items</code> 属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code> 属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+</li>
+</ol>
+<h4 id="4-未知元素上下左右垂直居中"><span class="heading-link">4.未知元素上下左右垂直居中</span></h4><ul>
+<li>flex实现方式：</li>
+</ul>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div</span>&#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<h4 id="5-js对象、原型链、构造函数"><span class="heading-link">5.js对象、原型链、构造函数</span></h4><ul>
+<li><code>__proto__</code>:每个JS对象一定对应一个原型对象，并继承原型对象的属性和方法。</li>
+<li>prototye: 只有函数才有 <code>prototype</code>属性。JS通过函数来模拟类，当创建函数时，JS会为这个函数自动添加<code>prototype</code>属性，值是空对象。而一旦把这个函数当做构造函数（<code>constructor</code>）调用（即通过<code>new</code>调用）,JS就会帮你创建该构造函数的实例，实例继承构造函数<code>prototype</code>的所有属性和方法（实例通过设置自己的 <code>__proto__</code> 指向承构造函数的prototype来实现这种继承）。</li>
+<li>JS通过<code>__proto__</code> 和<code>prototype</code>的合作实现了原型链，以及对象的继承。</li>
+<li>构造函数，通过 <code>protytype</code>来存储要共享的属性和方法，也可以设置<code>prototype</code>指向现存的对象来继承该对象。</li>
+</ul>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> one = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> two = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">one.__proto__ === <span class="built_in">Object</span>.prototype <span class="comment">// true</span></span><br><span class="line">two.__proto__ === <span class="built_in">Object</span>.prototype <span class="comment">// true</span></span><br><span class="line">one.toString === one.__proto__.toString <span class="comment">// true</span></span><br></pre></td></tr></table></div></figure>
+<p><strong>对象的 <code>__proto__</code> 指向自己的构造函数的 <code>prototype</code> 。<code>one.__proto__.__proto__...</code> 的原型链有次产生，包括操作符 <code>instanceof</code> 正是通过探测 <code>obj.__proto__.__proto__... === Constructor.prototype</code> 来验证 <code>obj</code> 是否是 <code>Constructor</code> 的实例。<br>回到开头的代码，<code>two = new Object()</code>中Object是构造函数，所以 <code>two.__proto__</code> 就是 <code>Object.prototype</code> 。至于 <code>one</code> ，ES规范定义对象字面量的原型就是 <code>Object.prototype</code> 。</strong></p>
+<ul>
+<li><code>Function.prototype</code> 和 <code>Function.__proto__</code> 都指向 <code>Function.prototype</code> 。</li>
+<li><code>Object.prototype.__proto__ == null</code> ,说明原型链到 <code>Object.prototye</code> 终止。</li>
+</ul>
+<p>结论：</p>
+<ul>
+<li><ol>
+<li>所有对象均从 <code>Object.prototye</code> 继承属性。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>Function.prototype</code> 和 <code>Function.prototype</code> 为同一个对象。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>Function.prototype</code> 直接继承 <code>root(Object.prototype)</code> 。</li>
+</ol>
+</li>
+</ul>
+<p><strong>一句话总结：先有<code>Object.prototype</code>(原型链顶端),<code>Function.prototype</code>继承<code>Object.prototype</code>而产生，<code>Function</code>和<code>Object</code>和其他构造函数继承<code>Function.prototype</code>而产生。</strong></p>
+<h4 id="6-常见的布局解决方案"><span class="heading-link">6.常见的布局解决方案</span></h4><ul>
+<li><p>1.居中布局</p>
+<ul>
+<li>水平居中</li>
+<li>垂直居中</li>
+</ul>
+</li>
+<li><p>2.单列布局：</p>
+<ul>
+<li>定宽，水平居中</li>
+</ul>
+</li>
+<li><p>3.二列布局&amp;三列布局</p>
+<ul>
+<li><code>float + margin</code> 左右浮动，中间 <code>margin</code></li>
+<li>position + margin 左右绝对定位，中间 <code>margin</code></li>
+<li>圣杯布局 <code>(float + 负margin + padding + position)</code></li>
+<li>双飞翼布局 <code>(float + 负margin + margin)</code></li>
+<li><code>Flex</code> 布局</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-关于WebSocket"><span class="heading-link">7.关于WebSocket</span></h4><ul>
+<li>WebSocket 是 HTML5 提出的一个协议规范。</li>
+<li>WebSocket 约定了一个通信的规范，通过一个握手的机制，客户端（浏览器）和服务器（webserver）之间能简历一个类型TCP 的链接，从而方便 c-s 之间的通信。在 websocket 出现之前，web 交互一般是基于 http 协议的短连接或者长连接。</li>
+<li>WebSocket 是为解决客户端与服务端实时通信而产生的技术。websocket 协议本质上是一个基于TCP的协议，是先通过 HTTP/HTTPS 协议发起一条特殊的 http 请求进行握手后创建一个用于交换的TCP连接，此后服务端与客户端通过此TCP连接进行实时通信。</li>
+<li><strong>优点</strong>： 服务器和客户端可以在给定的时间范围内的任意时刻，相互推送信息。浏览器和服务器只需要做一个握手的动作，在建立连接之后，服务器可以主动传送数据给客户端，客户端也可以随时向服务器发送数据。此外，服务器与客户端之间叫唤的标头信息很小。</li>
+<li>以前 web server 实现推送技术或者即时通讯，用的都是轮询（polling），在特定的时间间隔由浏览器自动发出请求，将服务器的消息主动拉取，在这种情况下，浏览器需要不断地向服务器发送请求，然而 HTTP request 的header 是非常长的，里面包含的数据可能只是一个很小的值，这样就会占用很多的带宽和服务器资源。</li>
+</ul>
+</div><footer class="post-footer"><div class="post-end"><span>------ </span><span>本文结束，感谢您的阅读</span><span> ------</span></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="https://iamtaoxin.com/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/">前端面试</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2018/03/10/vue-notes/"><i class="fa fa-chevron-left"></i><span>Vue常见知识点</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2018/02/07/es6-set/"><span>ES6之Set个人解读</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-box-sizing-应用场景"><span class="toc-number">1.</span> <span class="toc-text">2. box-sizing 应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Flex布局。"><span class="toc-number">2.</span> <span class="toc-text">3.Flex布局。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-未知元素上下左右垂直居中"><span class="toc-number">3.</span> <span class="toc-text">4.未知元素上下左右垂直居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-js对象、原型链、构造函数"><span class="toc-number">4.</span> <span class="toc-text">5.js对象、原型链、构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-常见的布局解决方案"><span class="toc-number">5.</span> <span class="toc-text">6.常见的布局解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-关于WebSocket"><span class="toc-number">6.</span> <span class="toc-text">7.关于WebSocket</span></a></li></ol></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://images.iamtaoxin.com/IMG_1096.PNG" alt="avatar"></div><p class="sidebar-ov-author__p">何时归去做个闲人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social__item" href="https://github.com/taosin" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-github"></i></a><a class="sidebar-ov-social__item" href="https://y.qq.com/n/yqq/playlist/7266592096.html#stat=y_new.profile.create_playlist.click&amp;dirid=1" target="_blank" rel="noopener" data-popover="social.music" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-music"></i></a><a class="sidebar-ov-social__item" href="https://segmentfault.com/u/northern" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">sf</span></a><a class="sidebar-ov-social__item" href="https://weibo.com/5164097015/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-weibo"></i></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">33</div><div class="sidebar-ov-state__a--name">归档</div></a><a class="sidebar-ov-state__a categories" href="/categories/"><div class="sidebar-ov-state__a--count">6</div><div class="sidebar-ov-state__a--name">分类</div></a><a class="sidebar-ov-state__a tags" href="/tags/"><div class="sidebar-ov-state__a--count">15</div><div class="sidebar-ov-state__a--name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>你已阅读了 </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Stay Hungry, Stay Foolish!</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.3" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '00abe1fd337c3b50c026',
+    clientSecret: 'c94c275f254abef59d8adfb1b48b89adad016e43',
+    repo: 'taoxindeblog',
+    owner: 'taosin',
+    admin: ['taosin'],
+    distractionFreeMode: 'false',
+    language: 'en'
+  });
+
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>

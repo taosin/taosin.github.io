@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="Nix_____, 闲人的博客"><meta name="description" content="闲人的博客"><title>判断一个对象是否为数组 | 闲人的博客</title><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: {"enable":true,"placeholder":"gif"},
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">闲人的博客</div><div class="header-info-subtitle">闲人的博客</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">判断一个对象是否为数组</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2018-05-17</span></span></div></header><div class="post-body"><div class="gallery" itemscope itemtype="http://schema.org/ImageGallery"><img class="gallery__img" src="http://images.iamtaoxin.com/0e11af972a262b19c8f38df754c88348.png" itemprop="contentUrl"></div><ul>
+<li><p>如何判断一个对象是不是 <strong>Array</strong></p>
+<ol>
+<li><p><code>Array.isArrya(obj)</code> 调用数组的 <code>isArray</code> 方法 ;</p>
+</li>
+<li><p><code>obj instanceOf Array</code> 判断对象是否是 <code>Array</code> 的示例 ;</p>
+</li>
+<li><p><code>Object.prototype.toString.call(obj) ===‘[object Array]’</code><br>   <code>Object.prototype.toString</code> 方法会取得对象的一个内部属性 <code>［［Class］］</code> ，然后依据这个属性，返回一个类似于<code>［object Array］</code>的字符串作为结果，<code>call</code> 用来改变 <code>toString</code> 的 <code>this</code> 指向为待检测的对象</p>
+</li>
+<li><p>判断对象是否有push等数组的一些方法。（这个方法有兼容问题，但也是一个简单易用的方法）</p>
+</li>
+<li><p><code>obj.constructor===Array   //true</code></p>
+</li>
+</ol>
+</li>
+<li><p><strong>同理判断一个对象是否是函数</strong>：</p>
+<p>  <code>console.log(Object.prototype.toString.call(obj)===&#39;[object Function]&#39;)    //true或false</code></p>
+</li>
+</ul>
+</div><footer class="post-footer"><div class="post-end"><span>------ </span><span>本文结束，感谢您的阅读</span><span> ------</span></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="https://iamtaoxin.com/tags/javascript/">javascript</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2018/05/18/axios-post/"><i class="fa fa-chevron-left"></i><span>使用axios发送POST请求时后端获取不到参数的问题</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2018/05/17/fe-interview/"><span>前端JS面试必须知道的几个点</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><div></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://images.iamtaoxin.com/IMG_1096.PNG" alt="avatar"></div><p class="sidebar-ov-author__p">何时归去做个闲人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social__item" href="https://github.com/taosin" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-github"></i></a><a class="sidebar-ov-social__item" href="https://y.qq.com/n/yqq/playlist/7266592096.html#stat=y_new.profile.create_playlist.click&amp;dirid=1" target="_blank" rel="noopener" data-popover="social.music" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-music"></i></a><a class="sidebar-ov-social__item" href="https://segmentfault.com/u/northern" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">sf</span></a><a class="sidebar-ov-social__item" href="https://weibo.com/5164097015/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-weibo"></i></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">33</div><div class="sidebar-ov-state__a--name">归档</div></a><a class="sidebar-ov-state__a categories" href="/categories/"><div class="sidebar-ov-state__a--count">6</div><div class="sidebar-ov-state__a--name">分类</div></a><a class="sidebar-ov-state__a tags" href="/tags/"><div class="sidebar-ov-state__a--count">15</div><div class="sidebar-ov-state__a--name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>你已阅读了 </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Stay Hungry, Stay Foolish!</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.3" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '00abe1fd337c3b50c026',
+    clientSecret: 'c94c275f254abef59d8adfb1b48b89adad016e43',
+    repo: 'taoxindeblog',
+    owner: 'taosin',
+    admin: ['taosin'],
+    distractionFreeMode: 'false',
+    language: 'en'
+  });
+
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>

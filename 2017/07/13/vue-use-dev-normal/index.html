@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="Nix_____, 闲人的博客"><meta name="description" content="闲人的博客"><title>vue.js组件使用和开发规范 | 闲人的博客</title><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: {"enable":true,"placeholder":"gif"},
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">闲人的博客</div><div class="header-info-subtitle">闲人的博客</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">vue.js组件使用和开发规范</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2017-07-13</span></span></div></header><div class="post-body"><div class="gallery" itemscope itemtype="http://schema.org/ImageGallery"><img class="gallery__img" src="http://images.iamtaoxin.com/219dda941a28c43341fb6063efcd06d0.png" itemprop="contentUrl"></div><p>参考：<span class="external-link"><a href="https://cn.vuejs.org/v2/style-guide/" target="_blank" rel="noopener">Vue.js风格指南</a><i class="fa fa-external-link"></i></span></p>
+<h2 id="开发规范"><span class="heading-link">开发规范</span></h2><h3 id="开发之前"><span class="heading-link">开发之前</span></h3><p>尽量使用最新ES语法，具体如下：</p>
+<ul>
+<li>正确使用<code>const</code>和<code>let</code>替代<code>var</code></li>
+<li>使用模板字符串<code>${this.data}</code></li>
+<li>将工具函数等依赖单独分离，并用<code>import</code>导入</li>
+<li>对象字面量缩写、箭头函数</li>
+<li>通用工具集可以在<code>utils/assist</code>内扩展</li>
+<li>在<code>local/routers</code>内测试组件</li>
+</ul>
+<h3 id="组件"><span class="heading-link">组件</span></h3><h4 id="1-命名"><span class="heading-link">1,命名</span></h4><ul>
+<li>尽量简单、表意</li>
+<li><code>export</code> 出的对象是用驼峰命名法，比如 <code>Page</code> 、 <code>ButtonItem</code></li>
+<li>如组件需要嵌套使用，子组件命名在父组件后加<code>-item</code>，比如<code>timeline</code>及<code>timeline-item</code></li>
+</ul>
+<h4 id="2-目录"><span class="heading-link">2,目录</span></h4><ul>
+<li>组件应在目录 <code>compoents/</code>下，每个组件要有单独的目录，目录命名是用小写，入口文件为<code>index.js</code>，导出组件，再由<code>index.js</code> 暴露给使用者</li>
+<li>每个组件的文件名当使用小写， 但必须与组件的名称一致，比如 <code>timeline.vue</code>和<code>timeline-item.vue</code></li>
+</ul>
+<h4 id="3-属性"><span class="heading-link">3,属性</span></h4><ul>
+<li>必须规定<code>type</code>或者使用<code>validator</code>进行验证</li>
+<li>如果<code>validator</code>验证为几个值中的一个，则使用<code>utils/assist</code>内的<code>oneOf</code>函数进行验证</li>
+<li>如果有尺寸的参数<code>size</code>，则只能使用<code>small</code> 、<code>large</code>，默认是适中，可不写</li>
+</ul>
+<h3 id="事件"><span class="heading-link">事件</span></h3><h4 id="1-命名-1"><span class="heading-link">1,命名</span></h4><ul>
+<li>使用<code>on-</code> 为前缀，比如<code>on-change</code></li>
+</ul>
+<h4 id="2-规范"><span class="heading-link">2,规范</span></h4><ul>
+<li>使用<code>$emit</code>来对外触发事件，而不用<code>$dispatch</code>和<code>$broadcast</code></li>
+<li>嵌套组件之间通信，使用<code>$parent</code>和<code>$children</code>，而不用<code>$emit</code>，避免使用这错误使用自定义事件</li>
+</ul>
+<h3 id="其他"><span class="heading-link">其他</span></h3><ul>
+<li>css前缀</li>
+</ul>
+<h2 id="使用规范"><span class="heading-link">使用规范</span></h2><p>使用 <code>:prop</code> 传递数据类型为<code>数字</code> 或 <code>boolean</code>时，必须带 <code>:</code>,比如：</p>
+<p>正确的使用方法：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line">&lt;Page :current=<span class="number">1</span> :total=<span class="string">"100"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Page</span>&gt;</span></span></span><br></pre></td></tr></table></div></figure>
+
+<p>错误的使用方法：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line">&lt;Page current=<span class="string">"1"</span> total=<span class="string">"100"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Page</span>&gt;</span></span></span><br></pre></td></tr></table></div></figure></div><footer class="post-footer"><div class="post-end"><span>------ </span><span>本文结束，感谢您的阅读</span><span> ------</span></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="https://iamtaoxin.com/tags/Vue-js/">Vue.js</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2018/02/06/app-shell-md/"><i class="fa fa-chevron-left"></i><span>App Shell模型</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2017/07/02/nginx/"><span>搭建Http静态服务器环境</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开发规范"><span class="toc-number">1.</span> <span class="toc-text">开发规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#开发之前"><span class="toc-number">1.1.</span> <span class="toc-text">开发之前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件"><span class="toc-number">1.2.</span> <span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-命名"><span class="toc-number">1.2.1.</span> <span class="toc-text">1,命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-目录"><span class="toc-number">1.2.2.</span> <span class="toc-text">2,目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-属性"><span class="toc-number">1.2.3.</span> <span class="toc-text">3,属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">1.3.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-命名-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">1,命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-规范"><span class="toc-number">1.3.2.</span> <span class="toc-text">2,规范</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">1.4.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用规范"><span class="toc-number">2.</span> <span class="toc-text">使用规范</span></a></li></ol></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://images.iamtaoxin.com/IMG_1096.PNG" alt="avatar"></div><p class="sidebar-ov-author__p">何时归去做个闲人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social__item" href="https://github.com/taosin" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-github"></i></a><a class="sidebar-ov-social__item" href="https://y.qq.com/n/yqq/playlist/7266592096.html#stat=y_new.profile.create_playlist.click&amp;dirid=1" target="_blank" rel="noopener" data-popover="social.music" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-music"></i></a><a class="sidebar-ov-social__item" href="https://segmentfault.com/u/northern" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">sf</span></a><a class="sidebar-ov-social__item" href="https://weibo.com/5164097015/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-weibo"></i></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">33</div><div class="sidebar-ov-state__a--name">归档</div></a><a class="sidebar-ov-state__a categories" href="/categories/"><div class="sidebar-ov-state__a--count">6</div><div class="sidebar-ov-state__a--name">分类</div></a><a class="sidebar-ov-state__a tags" href="/tags/"><div class="sidebar-ov-state__a--count">15</div><div class="sidebar-ov-state__a--name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>你已阅读了 </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Stay Hungry, Stay Foolish!</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.3" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '00abe1fd337c3b50c026',
+    clientSecret: 'c94c275f254abef59d8adfb1b48b89adad016e43',
+    repo: 'taoxindeblog',
+    owner: 'taosin',
+    admin: ['taosin'],
+    distractionFreeMode: 'false',
+    language: 'en'
+  });
+
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>

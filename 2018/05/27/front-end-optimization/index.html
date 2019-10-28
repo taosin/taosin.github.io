@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="Nix_____, 闲人的博客"><meta name="description" content="闲人的博客"><title>谈谈前端优化 | 闲人的博客</title><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: {"enable":true,"placeholder":"gif"},
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">闲人的博客</div><div class="header-info-subtitle">闲人的博客</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">谈谈前端优化</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2018-05-27</span></span></div></header><div class="post-body"><div class="gallery" itemscope itemtype="http://schema.org/ImageGallery"><img class="gallery__img" src="http://images.iamtaoxin.com/5b87ef0ca8dc0d15696bb971880d44b60618c940dbacf-P8nQd6_fw658.jpeg" itemprop="contentUrl"></div><h5 id="一、优化的原则和方向"><span class="heading-link">一、优化的原则和方向</span></h5><h6 id="1-1-前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个："><span class="heading-link">1.1 前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个：</span></h6><ul>
+<li>合理使用内存或缓存，减少请求；</li>
+<li>减少 CPU 或 GPU 的计算，达到更快的展现。</li>
+</ul>
+<h6 id="1-2-前端在性能优化的方向大致有两个："><span class="heading-link">1.2 前端在性能优化的方向大致有两个：</span></h6><ul>
+<li>减少页面体积，提升网络加载;</li>
+<li>优化页面渲染</li>
+</ul>
+<h5 id="二、方向详情"><span class="heading-link">二、方向详情</span></h5><h6 id="2-1-较少页面体积，提升网络加载"><span class="heading-link">2.1 较少页面体积，提升网络加载</span></h6><ul>
+<li>静态资源的压缩合并（<strong>JS</strong> 代码压缩合并、 CSS 代码压缩合并、雪碧图）<ul>
+<li>i. 压缩是为了减小文件的体积，减轻网络负载，达到更快的下载;</li>
+<li>ii. 合并和雪碧图都是为了减少文件的请求次数，但不是合并的就一定比没有合并时加载快，要考虑合并之后的体积，若文件合并之后太大也不利于性能优化，所以在实际项目中要做好权衡。</li>
+</ul>
+</li>
+<li>静态资源缓存（资源名称加 MD5 戳）<ul>
+<li>i. 可以通过链接名称控制缓存： 通过前端构建工具为打包的文件添加 <em>MD5</em> 后缀，这样当打包上线时请求的链接将发生改变，可以防止由于缓存导致静态资源更新失效；</li>
+</ul>
+</li>
+<li>使用 <em>CDN</em> 让资源加载更快</li>
+</ul>
+<h6 id="2-2-优化页面渲染"><span class="heading-link">2.2 优化页面渲染</span></h6><ul>
+<li>CSS 放在头部， <strong>JS</strong> 放后面<ul>
+<li>浏览器在渲染解析过程中，若遇到 <code>&lt;link href=&quot;...&quot;&gt;</code> 和 <code>&lt;script src=&quot;...&quot;&gt;</code> 这种外链加载 CSS 和 <strong>JS</strong> 的标签，浏览器会异步下载并解析执行。 CSS 放在头部是为了让浏览器今早解析执行 CSS 文件，渲染出页面的样式，若放在底部会出现渲染卡顿的情况，影响性能和体验。</li>
+<li>而当渲染过程中遇到 <code>script</code> 标签时就会执行 <strong>JS</strong> 代码，从而阻塞页面渲染，因为浏览器渲染和 <strong>JS</strong> 执行共用一个县城，而且这里必须是单线程操作，多线程会产生渲染 <strong>DOM</strong> 冲突。所以要将 <strong>JS</strong> 放在底部，等到页面渲染完成之后再去解析执行 JS，保证用户体验性。</li>
+<li>另外，JS 执行如果涉及 <strong>DOM</strong> 操作，得等待 <strong>DOM</strong> 解析完成才行，<strong>JS</strong> 放在底部执行是，HTML 肯定都解析成了 <strong>DOM</strong> 结构。 <strong>JS</strong> 如果放在 <strong>HTML</strong> 顶部，<strong>JS</strong> 执行的实行 <strong>HTML</strong> 还没来得及转换为 <strong>DOM</strong> 结构，可能会引起报错。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>懒加载（图片来加载、下拉加载更多）</p>
+<ul>
+<li>i. 先将 <code>src</code> 赋值成一个通用的浏览图，下拉的时候再动态赋值成正式的图片。通用的预览图可以是体积比较小的，这样加载会很快，待页面下拉，图片显示出来时，再去替换 <code>src</code> 为 <code>data-src</code> 的值。（ <code>data-</code> 开头的属性浏览器渲染的时候会忽略掉，提高渲染性能）<figure class="highlight html"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"preview.png"</span> <span class="attr">data-src</span>=<span class="string">"realImg.png"</span> /&gt;</span></span><br></pre></td></tr></table></div></figure>
+</li>
+</ul>
+</li>
+<li><p>减少 <strong>DOM</strong> 查询，对 <strong>DOM</strong> 查询做缓存，代码如下：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 只查询一个DOM，缓存在 pList 中了</span></span><br><span class="line"><span class="keyword">var</span> pList = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; pList.length; i++)&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//每次循环，都会查询 DOM，耗费性能</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>).length; i++)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>减少 <strong>DOM</strong> 操作，多个操作尽量合并在一起执行 （DocumentFragment）</p>
+<ul>
+<li><strong>DOM</strong> 操作是非常耗费性能的，因此插入多个标签时，先插入 <code>Fragment</code> 然后再统一插入 <strong>DOM</strong>。因为 <code>Fragment</code> 文档片段存在于内存中，并不在 <strong>DOM</strong> 树中，所以将子元素插入到文档片段时不会引起页面回流。</li>
+</ul>
+</li>
+<li><p>事件节流</p>
+<ul>
+<li>i. 防抖</li>
+<li>ii. 节流</li>
+</ul>
+</li>
+<li><p>尽早执行操作</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 页面的全部资源加载完才会执行，包括图片、视频等</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// DOM 渲染完成即可执行，此时图片、视频等资源可能没有加载完成</span></span><br><span class="line">&#125;)</span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 同 DOMContentLoaded</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure></li>
+<li><p>使用 <strong>预渲染</strong> 或者 <strong>SSR服务端渲染</strong>，数据直接输出到 <strong>HTML</strong>中，减少浏览器使用 <strong>JS</strong> 模板渲染页面 <strong>HTML</strong> 的时间，同时也有利于网站的 <strong>SEO</strong>。</p>
+</li>
+</ul>
+</div><footer class="post-footer"><div class="post-end"><span>------ </span><span>本文结束，感谢您的阅读</span><span> ------</span></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="https://iamtaoxin.com/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2018/06/08/node-js-nginx-https/"><i class="fa fa-chevron-left"></i><span>使用 Node.js + Nginx 部署 HTTPS</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2018/05/20/fe-interview-js/"><span>前端面试基础之JavaScript篇</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><div></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://images.iamtaoxin.com/IMG_1096.PNG" alt="avatar"></div><p class="sidebar-ov-author__p">何时归去做个闲人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social__item" href="https://github.com/taosin" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-github"></i></a><a class="sidebar-ov-social__item" href="https://y.qq.com/n/yqq/playlist/7266592096.html#stat=y_new.profile.create_playlist.click&amp;dirid=1" target="_blank" rel="noopener" data-popover="social.music" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-music"></i></a><a class="sidebar-ov-social__item" href="https://segmentfault.com/u/northern" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">sf</span></a><a class="sidebar-ov-social__item" href="https://weibo.com/5164097015/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-weibo"></i></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">33</div><div class="sidebar-ov-state__a--name">归档</div></a><a class="sidebar-ov-state__a categories" href="/categories/"><div class="sidebar-ov-state__a--count">6</div><div class="sidebar-ov-state__a--name">分类</div></a><a class="sidebar-ov-state__a tags" href="/tags/"><div class="sidebar-ov-state__a--count">15</div><div class="sidebar-ov-state__a--name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>你已阅读了 </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Stay Hungry, Stay Foolish!</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.3" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '00abe1fd337c3b50c026',
+    clientSecret: 'c94c275f254abef59d8adfb1b48b89adad016e43',
+    repo: 'taoxindeblog',
+    owner: 'taosin',
+    admin: ['taosin'],
+    distractionFreeMode: 'false',
+    language: 'en'
+  });
+
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>

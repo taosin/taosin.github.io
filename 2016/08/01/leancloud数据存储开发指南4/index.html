@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="Nix_____, 闲人的博客"><meta name="description" content="闲人的博客"><title>leadcloud数据存储开发指南(四)－Js篇 | 闲人的博客</title><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: {"enable":true,"placeholder":"gif"},
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">闲人的博客</div><div class="header-info-subtitle">闲人的博客</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">leadcloud数据存储开发指南(四)－Js篇</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2016-08-01</span></span></div></header><div class="post-body"><h2 id="leadcloud数据存储开发指南-四-－Js篇"><span class="heading-link">leadcloud数据存储开发指南(四)－Js篇</span></h2><p>保存对象<br>AV.Object 对象在保存时可以设置选项来快捷完成关联操作，可用的选项属性有：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>选项</th>
+<th align="center">类型</th>
+<th align="right">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchWhenSave</td>
+<td align="center">BOOL</td>
+<td align="right">对象成功保存后，自动返回该对象在云端的最新数据。用途请参考 更新计数器</td>
+</tr>
+<tr>
+<td>query</td>
+<td align="center">AV.Query</td>
+<td align="right">当 query 中的条件满足后对象才能成功保存，否则放弃保存，并返回错误码 305。</td>
+</tr>
+</tbody></table></div>
+<p>示例：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">new AV.Query(&apos;Wiki&apos;).first().then(function (data) &#123;</span><br><span class="line">    var wiki = data;</span><br><span class="line">    var currentVersion = wiki.get(&apos;version&apos;);</span><br><span class="line">    wiki.set(&apos;version&apos;, currentVersion + 1);</span><br><span class="line">    wiki.save(null, &#123;</span><br><span class="line">      query: new AV.Query(&apos;Wiki&apos;).equalTo(&apos;version&apos;, currentVersion)</span><br><span class="line">    &#125;).then(function (data) &#123;</span><br><span class="line">    &#125;, function (error) &#123;</span><br><span class="line">      if (error) &#123;</span><br><span class="line">        throw error;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, function (error) &#123;</span><br><span class="line">    if (error) &#123;</span><br><span class="line">      throw error;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></div></figure>
+
+<p>获取对象<br>每个被成功保存在云端的对象会有一个唯一的 Id 标识 id，因此获取对象的最基本的方法就是根据 id 来查询：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">var query = new AV.Query(&apos;Todo&apos;);</span><br><span class="line">query.get(&apos;57328ca079bc44005c2472d0&apos;).then(function (data) &#123;</span><br><span class="line">  // 成功获得实例</span><br><span class="line">  // data 就是 id 为 57328ca079bc44005c2472d0 的 Todo 对象实例</span><br><span class="line">&#125;, function (error) &#123;</span><br><span class="line">  // 失败了</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+<p>如果不想使用查询，还可以通过从本地构建一个 id，然后调用接口从云端把这个 id 的数据拉取到本地，示例代码如下:</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">// 第一个参数是 className，第二个参数是 objectId</span><br><span class="line"> var todo = AV.Object.createWithoutData(&apos;Todo&apos;, &apos;5745557f71cfe40068c6abe0&apos;);</span><br><span class="line"> var title = todo.get(&apos;title&apos;);// 读取 title</span><br><span class="line"> var content = todo.get(&apos;content&apos;);// 读取 content</span><br></pre></td></tr></table></div></figure>
+
+<p>获取 objectId<br>每一次对象存储成功之后，云端都会返回 id，它是一个全局唯一的属性。</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="code"><pre><span class="line">var todo = new Todo();</span><br><span class="line"> todo.set(&apos;title&apos;, &apos;工程师周会&apos;);</span><br><span class="line"> todo.set(&apos;content&apos;, &apos;每周工程师会议，周一下午2点&apos;);</span><br><span class="line"> todo.save().then(function (todo) &#123;</span><br><span class="line">   // 成功保存之后，执行其他逻辑</span><br><span class="line">   // 获取 objectId</span><br><span class="line">   var objectId = todo.id;</span><br><span class="line"> &#125;, function (error) &#123;</span><br><span class="line">   // 失败之后执行其他逻辑</span><br><span class="line">   console.log(error);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></div></figure></div><footer class="post-footer"><div class="post-end"><span>------ </span><span>本文结束，感谢您的阅读</span><span> ------</span></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="https://iamtaoxin.com/tags/leancloud/">leancloud</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2017/05/20/vue-leancloud%E8%BD%BB%E6%9D%BE%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><i class="fa fa-chevron-left"></i><span>Vue+leancloud轻松打造个人博客</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2016/07/31/js%E5%AE%9E%E7%8E%B0%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D/"><span>Js实现对象的深度拷贝</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#leadcloud数据存储开发指南-四-－Js篇"><span class="toc-number">1.</span> <span class="toc-text">leadcloud数据存储开发指南(四)－Js篇</span></a></li></ol></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://images.iamtaoxin.com/IMG_1096.PNG" alt="avatar"></div><p class="sidebar-ov-author__p">何时归去做个闲人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social__item" href="https://github.com/taosin" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-github"></i></a><a class="sidebar-ov-social__item" href="https://y.qq.com/n/yqq/playlist/7266592096.html#stat=y_new.profile.create_playlist.click&amp;dirid=1" target="_blank" rel="noopener" data-popover="social.music" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-music"></i></a><a class="sidebar-ov-social__item" href="https://segmentfault.com/u/northern" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">sf</span></a><a class="sidebar-ov-social__item" href="https://weibo.com/5164097015/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-weibo"></i></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">33</div><div class="sidebar-ov-state__a--name">归档</div></a><a class="sidebar-ov-state__a categories" href="/categories/"><div class="sidebar-ov-state__a--count">6</div><div class="sidebar-ov-state__a--name">分类</div></a><a class="sidebar-ov-state__a tags" href="/tags/"><div class="sidebar-ov-state__a--count">15</div><div class="sidebar-ov-state__a--name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>你已阅读了 </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Stay Hungry, Stay Foolish!</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.3" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '00abe1fd337c3b50c026',
+    clientSecret: 'c94c275f254abef59d8adfb1b48b89adad016e43',
+    repo: 'taoxindeblog',
+    owner: 'taosin',
+    admin: ['taosin'],
+    distractionFreeMode: 'false',
+    language: 'en'
+  });
+
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="Nix_____, 闲人的博客"><meta name="description" content="闲人的博客"><title>Vue+leancloud轻松打造个人博客 | 闲人的博客</title><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: {"enable":true,"placeholder":"gif"},
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">闲人的博客</div><div class="header-info-subtitle">闲人的博客</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">Vue+leancloud轻松打造个人博客</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2017-05-20</span></span></div></header><div class="post-body"><div class="gallery" itemscope itemtype="http://schema.org/ImageGallery"><img class="gallery__img" src="http://images.iamtaoxin.com/0e11af972a262b19c8f38df754c88348.png" itemprop="contentUrl"></div><p>基于Vue.js的纯前端博客  </p>
+<ul>
+<li>通过Vue构建博客前端框架</li>
+<li>前端代码自动化部署到阿里云cdn</li>
+<li>使用阿里云和leancloud构建一个强大的个人博客</li>
+</ul>
+<hr>
+<p>项目采用前端使用vue 1.0做为开发框架，leancloud为本站提供数据储存服务。所有静态文件存放在阿里OSS上，无需另外购买服务器，这对于个人来说省了不少费用。</p>
+<p>博客说明：该项目是个人博客 <span class="external-link"><a href="http://blog.iamtaoxin.com" target="_blank" rel="noopener">iamtaoxin</a><i class="fa fa-external-link"></i></span> 的前端源码，它属于博客系统的一部分，博客系统一共分3部分:</p>
+<ol>
+<li>基于Vue 1.0构建的Vuex架构的博客前端页面</li>
+<li>使用 <span class="external-link"><a href="http://leancloud.cn" target="_blank" rel="noopener"><code>Leancloud</code></a><i class="fa fa-external-link"></i></span> 作为数据存储</li>
+<li>收藏阅读笔记的Safari插件</li>
+</ol>
+<p>源码地址： <span class="external-link"><a href="https://github.com/taosin/ixinyi_admin" target="_blank" rel="noopener">Github</a><i class="fa fa-external-link"></i></span></p>
+<h2 id="具体步骤如下："><span class="heading-link">具体步骤如下：</span></h2><p><strong>一、获取代码，安装依赖</strong><br>拉取博客代码至本地目录文件夹，进入文件加中public中安装依赖程序。</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>二、安装leancloud SDK</strong><br>2.1在<code>index.html</code>中添加以下代码：</p>
+<!-- 存储服务 -->
+<script src="//cdn1.lncld.net/static/js/2.1.4/av-min.js"></script>
+
+<p><strong><em>具体安装指南见 ：</em></strong><br>JavaScript SDK 安装指南</p>
+<p>2.2leancloud初始化<br>在<code>ext/vue_ext.js</code>文件中已封装好<code>leancloud</code>初始化的方法，如下：</p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">AVInit</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">const</span> appId = <span class="string">'Your appID'</span>;</span><br><span class="line">   <span class="keyword">const</span> appKey = <span class="string">'Your appkey'</span>;</span><br><span class="line">   AV.init(&#123; <span class="attr">appId</span>:appId, <span class="attr">appKey</span>:appKey &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>只需在App.vue中调用即可:</p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="code"><pre><span class="line">ready()&#123;</span><br><span class="line">    <span class="keyword">this</span>.$AVInit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>三、启动项目</strong></p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm run dev</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>四、部署项目</strong></p>
+<p> 部署项目中使用到了<code>aliyunoss-webpack-plugin</code></p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install aliyunoss-webpack-plugin --save-dev</span><br></pre></td></tr></table></div></figure>
+
+<p>在 <code>webpack.prod.conf.js</code> 中配置自己的路径和相应的key</p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> AliyunossWebpackPlugin(&#123;</span><br><span class="line">    buildPath: __dirname + <span class="string">'/build'</span>,</span><br><span class="line">    region: <span class="string">'your region'</span>,</span><br><span class="line">    accessKeyId: <span class="string">'your accessKeyId'</span>,</span><br><span class="line">    accessKeySecret: <span class="string">'your accessKeySecret'</span>,</span><br><span class="line">    bucket: <span class="string">'your bucket'</span>,</span><br><span class="line">    deleteAll: <span class="literal">true</span>,</span><br><span class="line">    getObjectHeaders: <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> &#123;</span><br><span class="line">         <span class="string">'Cache-Control'</span>: <span class="string">'max-age=2592000'</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>五、部署项目</strong></p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm run build</span><br></pre></td></tr></table></div></figure>
+
+<p>至此，项目部署已完成，配置相应的域名即可访问。</p>
+<hr>
+<p>书写完毕，如有欠缺，请多指教。</p>
+</div><footer class="post-footer"><div class="post-end"><span>------ </span><span>本文结束，感谢您的阅读</span><span> ------</span></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="https://iamtaoxin.com/tags/Vue-js/">Vue.js</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2017/05/21/CentOS-%E5%AE%89%E8%A3%85Node-js%E3%80%81npm%E3%80%81htop%E3%80%81pm2/"><i class="fa fa-chevron-left"></i><span>CentOS 安装 Node.js、npm、htop、pm2</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2016/08/01/leancloud%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%974/"><span>leadcloud数据存储开发指南(四)－Js篇</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体步骤如下："><span class="toc-number">1.</span> <span class="toc-text">具体步骤如下：</span></a></li></ol></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://images.iamtaoxin.com/IMG_1096.PNG" alt="avatar"></div><p class="sidebar-ov-author__p">何时归去做个闲人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social__item" href="https://github.com/taosin" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-github"></i></a><a class="sidebar-ov-social__item" href="https://y.qq.com/n/yqq/playlist/7266592096.html#stat=y_new.profile.create_playlist.click&amp;dirid=1" target="_blank" rel="noopener" data-popover="social.music" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-music"></i></a><a class="sidebar-ov-social__item" href="https://segmentfault.com/u/northern" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">sf</span></a><a class="sidebar-ov-social__item" href="https://weibo.com/5164097015/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-weibo"></i></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">33</div><div class="sidebar-ov-state__a--name">归档</div></a><a class="sidebar-ov-state__a categories" href="/categories/"><div class="sidebar-ov-state__a--count">6</div><div class="sidebar-ov-state__a--name">分类</div></a><a class="sidebar-ov-state__a tags" href="/tags/"><div class="sidebar-ov-state__a--count">15</div><div class="sidebar-ov-state__a--name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>你已阅读了 </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Stay Hungry, Stay Foolish!</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.3" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '00abe1fd337c3b50c026',
+    clientSecret: 'c94c275f254abef59d8adfb1b48b89adad016e43',
+    repo: 'taoxindeblog',
+    owner: 'taosin',
+    admin: ['taosin'],
+    distractionFreeMode: 'false',
+    language: 'en'
+  });
+
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>
