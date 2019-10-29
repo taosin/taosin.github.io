@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="Nix_____, 闲人的博客"><meta name="description" content="闲人的博客"><title>Babel 入门教程 | 闲人的博客</title><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="http://images.iamtaoxin.com/IMG_1096.PNG?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-96088772-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-96088772-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: {"enable":true,"placeholder":"gif"},
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">闲人的博客</div><div class="header-info-subtitle">生命不息，折腾不止</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">Babel 入门教程</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-07-08</span></span><span class="post-header-meta-reading-count"><i class="fa fa-eye"></i><span>阅读次数 </span><span id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>作用：将 ES6+ 版本的代码转换为 ES5代码，以便能够运行在当前环境和旧版浏览器环境中。</p>
+<p><img src="/images/loading.svg" alt="Babel" class="lazyload gif" data-src="http://images.iamtaoxin.com/bg2016012501.png"></p>
+<p>这就意味着，可以用 ES6 编写代码，而不用担心当前环境是否支持的问题。</p>
+<a id="more"></a>
+<h2 id="一、配置-babelrc"><span class="heading-link">一、配置 .babelrc</span></h2><p>使用 Babel的第一步，就是配置 <code>.babelrc</code> 这个文件，该文件存放在项目根目录下，用来设置转码规则和插件，基本格式如下：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"presets"</span>: [...],</span><br><span class="line">	<span class="string">"plugins"</span>: [...]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>其中 <code>presets</code> 字段设定转码规则，可根据需要安装。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"># ES2015转码规则</span><br><span class="line">$ npm install —save-dev babel-preset-es2015</span><br><span class="line"></span><br><span class="line"># react转码规则</span><br><span class="line">$ npm install —save-dev babel-preset-react</span><br><span class="line"></span><br><span class="line"># ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个</span><br><span class="line">$ npm install —save-dev babel-preset-stage<span class="number">-0</span></span><br><span class="line">$ npm install —save-dev babel-preset-stage<span class="number">-1</span></span><br><span class="line">$ npm install —save-dev babel-preset-stage<span class="number">-2</span></span><br><span class="line">$ npm install —save-dev babel-preset-stage<span class="number">-3</span></span><br></pre></td></tr></table></div></figure>
+
+<p>然后将这些规则加入 <code>.babelrc</code>:</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line">	&#123;</span><br><span class="line">		<span class="string">"presets"</span>: [</span><br><span class="line">			<span class="string">"es2015"</span>,</span><br><span class="line">			<span class="string">"react"</span>,</span><br><span class="line">			<span class="string">"stage-2"</span></span><br><span class="line">		],</span><br><span class="line">		<span class="string">"plugins"</span>: [...]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<h2 id="二、命令行转码-babel-cli"><span class="heading-link">二、命令行转码 babel-cli</span></h2><p>Babel 提供 <code>babel-cli</code> 工具，用于命令行转码。</p>
+<p>安装命令如下：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install --global babel-cli</span><br></pre></td></tr></table></div></figure>
+
+<p>基本用法如下：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 转码结果输出到标准输出</span></span><br><span class="line">$ babel example.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转码结果写入一个文件</span></span><br><span class="line"><span class="comment"># --out-file 或 -o 参数指定输出文件</span></span><br><span class="line">$ babel example.js --out-file compiled.js</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ babel example.js -o compiled.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 整个目录转码</span></span><br><span class="line"><span class="comment"># --out-dir 或 -d 参数指定输出目录</span></span><br><span class="line">$ babel src --out-dir lib</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ babel src -d lib</span><br><span class="line"></span><br><span class="line"><span class="comment"># -s 参数生成source map文件</span></span><br><span class="line">$ babel src -d lib -s</span><br></pre></td></tr></table></div></figure>
+
+<p>以上代码是在全局环境下安装的，存在两个问题：</p>
+<ol>
+<li>如果项目要运行，全局环境必须有 Babel，也就是说项目对环境产生了依赖。</li>
+<li>全局安装 Babel，无法支持不同项目使用不同版本的 Babel。</li>
+</ol>
+<p>针对上述问题，解决的办法是将 <code>babel-cli</code> 安装在项目之中。</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="comment"># install</span></span><br><span class="line">$ npm install -save-dev babel-cli</span><br></pre></td></tr></table></div></figure>
+
+<p>然后，改写 <code>package.json</code>。</p>
+<figure class="highlight"><div class="table-container"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // …</span><br><span class="line">  “devDependencies”: &#123;</span><br><span class="line">    “babel-cli”: “^6.0.0”</span><br><span class="line">  &#125;,</span><br><span class="line">  “scripts”: &#123;</span><br><span class="line">    “build”: “babel src -d lib”</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>转码的时候，执行<code>$ npm run build</code> 命令即可。</p>
+<h2 id="三、babel-node"><span class="heading-link">三、babel-node</span></h2><p><code>babel-cli</code> 工具自带一个 <code>babel-node</code> 命令，提供一个支持 ES6 的 REPl环境。它支持 Node的REPL环境的所有功能，而且可以直接运行ES6代码。</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ babel-node</span><br><span class="line">&gt; (x =&gt; x * 2)(1)</span><br></pre></td></tr></table></div></figure>
+
+<p><code>babel-node</code> 命令可以直接运行ES6脚本。将上面的代码放入脚本文件 <code>es6.js</code>，然后直接运行。</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ babel-node es6.js</span><br><span class="line">2</span><br></pre></td></tr></table></div></figure>
+
+<p><code>babel-node</code> 也可以安装在项目中。</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install --save-dev babel-cli</span><br></pre></td></tr></table></div></figure>
+
+<p>然后改写 <code>package.json</code>。</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">		<span class="attr">"scripts"</span>: &#123;</span><br><span class="line">			<span class="attr">"script-name"</span>: <span class="string">"babel-node script.js"</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>上面的代码中，使用     <code>babel-node</code> 替代 <code>node</code>， 这样 <code>script.js</code> 本身就不用做任何转码处理。</p>
+<h2 id="四、babel-register"><span class="heading-link">四、babel-register</span></h2><p><code>babel-register</code> 模块改写 <code>require</code> 命令，为它加上一个钩子。此后，每当使用 <code>require</code> 加载 <code>.js</code> 、<code>.jsx</code> 、 <code>.es</code> 和 <code>.es6</code> 后缀名的文件，就会先用 Babel进行转码。</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install -save-dev babel-register</span><br></pre></td></tr></table></div></figure>
+
+<p>使用时，必须首先加载 <code>babel-register</code>。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"babel-register"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"./index.js"</span>);</span><br></pre></td></tr></table></div></figure>
+
+<p>然后就不需要手动对 <code>index.js</code> 转码了。</p>
+<p>需要注意的是， <code>babel-register</code> 只会对 <code>require</code> 命令加载的文件转码，而不会对当前文件转码。另外它是实时转码，所以只适合在开发环境使用。</p>
+<h2 id="五、babel-core"><span class="heading-link">五、babel-core</span></h2><p>如果某些代码需要调用到Babel的API进行转码，就需要使用 <code>babel-core</code> 模块。</p>
+<p>安装命令如下：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install babel-core --saves</span><br></pre></td></tr></table></div></figure>
+
+<p>然后，在项目中就可以调用  <code>babel-core</code>。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> babel = <span class="built_in">require</span>(<span class="string">"babel-core"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转码</span></span><br><span class="line">babel.transform(<span class="string">'code();'</span>, options);</span><br><span class="line"><span class="comment">// =&gt; &#123; code, map, ast&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件转码 (异步)</span></span><br><span class="line">babel.transformFile(<span class="string">'filename.js'</span>, options, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">		result;  <span class="comment">// =&gt; &#123;code, map, ast&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件转码（同步）</span></span><br><span class="line">babel.transformFileSync(<span class="string">'filename.js'</span>, options);</span><br><span class="line"><span class="comment">// =&gt; &#123;code, map, ast&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Babel AST转码</span></span><br><span class="line">babel.transformFromAst(ast, code, options);</span><br><span class="line"><span class="comment">// =&gt; &#123; code, map, ast &#125;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>配置对象 <code>options</code>,可以参看官方文档 <span class="external-link"><a href="http://babeljs.io/docs/usage/options/" target="_blank" rel="noopener">http://babeljs.io/docs/usage/options/</a><i class="fa fa-external-link"></i></span> 。</p>
+<p>下面是一个例子。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> es6Code = <span class="string">'let x = n =&gt; n + 1'</span>;</span><br><span class="line"><span class="keyword">var</span> es5Code = <span class="built_in">require</span>(<span class="string">'babel-core'</span>)</span><br><span class="line">	.transform(es6Code, &#123;</span><br><span class="line">	presets: [<span class="string">'es2015'</span>]</span><br><span class="line">&#125;)</span><br><span class="line">.code</span><br><span class="line"><span class="comment">// '"use strict";\n\nvar x = function x(n) &#123;\n  return n + 1;\n&#125;;'</span></span><br></pre></td></tr></table></div></figure>
+<p>上述代码中， <code>transform</code> 方法的第一个参数是字符串，标识需要转换的ES6代码，第二个参数是转换的配置对象。</p>
+<h2 id="六、babel-polyfill"><span class="heading-link">六、babel-polyfill</span></h2><p>Babel默认制转换新的JavaScript句法(syntax)，而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如  <code>Object.assign</code>）都不会转码。</p>
+<p>举例来说，ES6在 <code>Array</code> 对象上新增了 <code>Array.from</code> 方法。 Babel就不会转码这个方法。如果想让这个方法运行，必须使用 <code>babel-polyfill</code>,为当前环境提供一个垫片。</p>
+<p>安装命令如下：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$ npm install --save babel-polyfill</span><br></pre></td></tr></table></div></figure>
+
+<p>然后，在脚本头部，加入如下代码：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'babel-polyfill'</span>;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'babel-polyfill'</span>)</span><br></pre></td></tr></table></div></figure>
+
+<h2 id="七、浏览器环境"><span class="heading-link">七、浏览器环境</span></h2><p>Babel也可以用于浏览器环境。但是，从Babel 6.0开始，不再直接提供浏览器版本，而是要用构建工具构建出来。如果你没有或者不想使用构建工具，可以通过安装5.x版本的 <code>babel-core</code> 模块获取。</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install babel-core@old</span><br></pre></td></tr></table></div></figure>
+
+<p>运行上面的命令以后，就可以在当前目录的 <code>node_modules/babel-core</code>子目录里面，找到<code>babel</code> 的浏览器版本<code>browser.js</code>和<code>browser.min.js</code>。</p>
+<p>然后，将下面代码插入网页：</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"node_modules/babel-core/browser.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/babel"</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="comment">// Your ES6 code</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>上面代码中，<code>browser.js</code> 是Babel提供的转换器脚本，可以在浏览器运行。用户的ES6脚本放在 <code>script</code>标签之中，但是要注明 <code>type=&quot;text/babel&quot;</code>。</p>
+<p>另一种方法是使用 <span class="external-link"><a href="https://github.com/Daniel15/babel-standalone" target="_blank" rel="noopener">babel-standalone</a><i class="fa fa-external-link"></i></span> 模块提供的浏览器版本，将其插入网页。</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">" [https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.4.4/babel.min.js](https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.4.4/babel.min.js) "</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/babel"</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="comment">// Your ES6 code</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>注意：网页中实时将ES6代码转为ES5，对性能会有影响。生产环境需要加载已经转码完成的脚本。</p>
+<p>下面是如何将代码打包成浏览器可以使用的脚本，以 <code>Babel</code> 配合 <code>Browserify</code> 为例。首先，安装 <code>babelify</code> 模块：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install --save-dev babelify babel-preset-es2015</span><br></pre></td></tr></table></div></figure>
+<p>然后，再用命令行转换ES6脚本：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ browserify script.js -o bundle.js \ -t [babelify --presets [ es2015 react] ]</span><br></pre></td></tr></table></div></figure>
+
+<p>上面代码将ES6脚本 <code>script.js</code>，转为 <code>bundle.js</code>，浏览器直接加载后者就可以了。</p>
+<p>在 <code>package.json</code> 设置下面的代码，就不用每次命令行都输入参数了。</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	<span class="attr">"browserify"</span>: &#123;</span><br><span class="line">		<span class="attr">"transform"</span>: [[<span class="string">"babelify"</span>, &#123;<span class="attr">"presets"</span>: [<span class="string">"es2015"</span>]&#125;]]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<h2 id="八、与其他工具配合"><span class="heading-link">八、与其他工具配合</span></h2><p>这里举两个例子：ESLint和Mocha。</p>
+<p> <span class="external-link"><a href="http://eslint.org/" target="_blank" rel="noopener">ESLint</a><i class="fa fa-external-link"></i></span> 用于静态检查代码的语法和风格，安装命令如下：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">$ npm install --save-dev eslint babel-eslint</span><br></pre></td></tr></table></div></figure>
+
+<p>然后，在项目根目录下，新建一个配置文件<code>.eslint</code>，在其中加入<code>parser</code>字段。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  “parser”: “babel-eslint”,</span><br><span class="line">  “rules”: &#123;</span><br><span class="line">    …</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p> 再在 <code>package.json</code> 之中，加入相应的<code>scripts</code>  脚本。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"my-module"</span>,</span><br><span class="line">    <span class="string">"scripts"</span>: &#123;</span><br><span class="line">      <span class="string">"lint"</span>: <span class="string">"eslint my-files.js"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">      <span class="string">"babel-eslint"</span>: <span class="string">"..."</span>,</span><br><span class="line">      <span class="string">"eslint"</span>: <span class="string">"..."</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p> <span class="external-link"><a href="http://www.ruanyifeng.com/blog/2015/12/a-mocha-tutorial-of-examples.html" target="_blank" rel="noopener">Mocha</a><i class="fa fa-external-link"></i></span> 则是一个测试框架，如果需要执行使用ES6语法的测试脚本，可以修改<code>package.json</code> 的<code>scripts.test</code>。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"test"</span>: <span class="string">"mocha —ui qunit —compilers js:babel-core/register"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>上面命令中， <code>--compilers</code> 参数指定脚本的转码器，规定后缀名为 <code>js</code> 的文件，都需要使用 <code>babel-core/register</code>先转码。</p>
+<hr>
+<p>文章摘自： <span class="external-link"><a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/01/babel.html</a><i class="fa fa-external-link"></i></span> </p>
+</div><footer class="post-footer"><div class="post-end"><span>------ </span><span>本文结束，感谢您的阅读</span><span> ------</span></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="https://iamtaoxin.com/tags/Babel/">Babel</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2019/10/08/why-run/"><i class="fa fa-chevron-left"></i><span>坚持跑步的一些理由</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2019/04/14/2019-books/"><span>2019年书单</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、配置-babelrc"><span class="toc-number">1.</span> <span class="toc-text">一、配置 .babelrc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、命令行转码-babel-cli"><span class="toc-number">2.</span> <span class="toc-text">二、命令行转码 babel-cli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、babel-node"><span class="toc-number">3.</span> <span class="toc-text">三、babel-node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、babel-register"><span class="toc-number">4.</span> <span class="toc-text">四、babel-register</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、babel-core"><span class="toc-number">5.</span> <span class="toc-text">五、babel-core</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、babel-polyfill"><span class="toc-number">6.</span> <span class="toc-text">六、babel-polyfill</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、浏览器环境"><span class="toc-number">7.</span> <span class="toc-text">七、浏览器环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、与其他工具配合"><span class="toc-number">8.</span> <span class="toc-text">八、与其他工具配合</span></a></li></ol></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://images.iamtaoxin.com/IMG_1096.PNG" alt="avatar"></div><p class="sidebar-ov-author__p">何时归去做个闲人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social__item" href="https://github.com/taosin" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-github"></i></a><a class="sidebar-ov-social__item" href="https://y.qq.com/n/yqq/playlist/7266592096.html#stat=y_new.profile.create_playlist.click&amp;dirid=1" target="_blank" rel="noopener" data-popover="social.music" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-music"></i></a><a class="sidebar-ov-social__item" href="https://me.csdn.net/u013184826" target="_blank" rel="noopener" data-popover="social.csdn" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-csdn"></i></a><a class="sidebar-ov-social__item" href="https://juejin.im/user/56b18bdc71cfe400544113db" target="_blank" rel="noopener" data-popover="social.juejin" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">掘</span></a><a class="sidebar-ov-social__item" href="https://segmentfault.com/u/northern" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social__item--logo">sf</span></a><a class="sidebar-ov-social__item" href="https://weibo.com/5164097015/profile?topnav=1&amp;wvr=6" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><i class="sidebar-ov-social__item--icon fa fa-weibo"></i></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">33</div><div class="sidebar-ov-state__a--name">归档</div></a><a class="sidebar-ov-state__a categories" href="/categories/"><div class="sidebar-ov-state__a--count">4</div><div class="sidebar-ov-state__a--name">分类</div></a><a class="sidebar-ov-state__a tags" href="/tags/"><div class="sidebar-ov-state__a--count">15</div><div class="sidebar-ov-state__a--name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>你已阅读了 </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div class="busuanzi"><span class="busuanzi-site_uv"><i class="fa fa-user"></i><span>访问人数 </span><span id="busuanzi_value_site_uv"></span></span><span class="separator">|</span><span class="busuanzi-site_pv"><i class="fa fa-eye"></i><span>浏览总量 </span><span id="busuanzi_value_site_pv"></span></span><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><div><span>Stay Hungry, Stay Foolish!</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.3" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '00abe1fd337c3b50c026',
+    clientSecret: 'c94c275f254abef59d8adfb1b48b89adad016e43',
+    repo: 'taoxindeblog',
+    owner: 'taosin',
+    admin: ['taosin'],
+    distractionFreeMode: 'false',
+    language: 'en'
+  });
+
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async=""></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-8429439848989291',
+  enable_page_level_ads: true
+});</script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>
