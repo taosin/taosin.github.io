@@ -1096,209 +1096,209 @@ td {
 .highlight.js figcaption span:first-child::before {
   content: 'js';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.javascript figcaption span:first-child::before {
   content: 'javascript';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.python figcaption span:first-child::before {
   content: 'python';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.ruby figcaption span:first-child::before {
   content: 'ruby';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.xml figcaption span:first-child::before {
   content: 'xml';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.html figcaption span:first-child::before {
   content: 'html';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.css figcaption span:first-child::before {
   content: 'css';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.php figcaption span:first-child::before {
   content: 'php';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.sql figcaption span:first-child::before {
   content: 'sql';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.coffeescript figcaption span:first-child::before {
   content: 'coffeescript';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.java figcaption span:first-child::before {
   content: 'java';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.bash figcaption span:first-child::before {
   content: 'bash';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.markdown figcaption span:first-child::before {
   content: 'markdown';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.kotlin figcaption span:first-child::before {
   content: 'kotlin';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.c figcaption span:first-child::before {
   content: 'c';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.c\+\+ figcaption span:first-child::before {
   content: 'c\+\+';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.c# figcaption span:first-child::before {
   content: 'c#';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.go figcaption span:first-child::before {
   content: 'go';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.golang figcaption span:first-child::before {
   content: 'golang';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.less figcaption span:first-child::before {
   content: 'less';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.sass figcaption span:first-child::before {
   content: 'sass';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.scss figcaption span:first-child::before {
   content: 'scss';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.stylus figcaption span:first-child::before {
   content: 'stylus';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.styl figcaption span:first-child::before {
   content: 'styl';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.typescript figcaption span:first-child::before {
   content: 'typescript';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.ts figcaption span:first-child::before {
   content: 'ts';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.yml figcaption span:first-child::before {
   content: 'yml';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.yaml figcaption span:first-child::before {
   content: 'yaml';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.matlab figcaption span:first-child::before {
   content: 'matlab';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.objectivec figcaption span:first-child::before {
   content: 'objectivec';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.makefile figcaption span:first-child::before {
   content: 'makefile';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.scala figcaption span:first-child::before {
   content: 'scala';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.gradle figcaption span:first-child::before {
   content: 'gradle';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.swift figcaption span:first-child::before {
   content: 'swift';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.rust figcaption span:first-child::before {
   content: 'rust';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.lua figcaption span:first-child::before {
   content: 'lua';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.lisp figcaption span:first-child::before {
   content: 'lisp';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.fortran figcaption span:first-child::before {
   content: 'fortran';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.dart figcaption span:first-child::before {
   content: 'dart';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight.perl figcaption span:first-child::before {
   content: 'perl';
   margin: 0 0.6rem 0 0;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight {
   margin: 0 0 1rem;
   width: 100%;
   line-height: 1.7;
-  color: #7a85b9;
-  background-color: #0f111a;
+  color: #f8f8f2;
+  background-color: #304148;
 }
 .highlight pre,
 .highlight code {
@@ -1314,8 +1314,8 @@ td {
   position: relative;
   padding: 0.1rem 0;
   width: 100%;
-  color: #7a85b9;
-  background-color: #0e0f17;
+  color: #f8f8f2;
+  background-color: #2e3e44;
 }
 .highlight figcaption::before,
 .highlight figcaption::after {
@@ -1328,7 +1328,7 @@ td {
 .highlight figcaption span:first-child {
   float: left;
   margin-left: 0.5rem;
-  color: #7a85b9;
+  color: #f8f8f2;
 }
 .highlight figcaption span.external-link {
   float: right;
@@ -1341,7 +1341,7 @@ td {
 .highlight figcaption.custom .custom-lang {
   float: left;
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.6);
+  color: rgba(248,248,242,0.5);
 }
 .highlight .code {
   padding: 0 0 0 0.4rem;
@@ -1349,16 +1349,16 @@ td {
 .highlight .gutter {
   padding: 0.4rem 0.6rem;
   width: 1rem;
-  background-color: #0e0f17;
+  background-color: #2e3e44;
 }
 .highlight .gutter pre {
   text-align: right;
-  color: #353d65;
+  color: rgba(248,248,242,0.2);
   background-color: inherit;
 }
 .highlight .variable,
 .highlight .attribute {
-  color: #ff5370;
+  color: #ec5f67;
 }
 .highlight .number,
 .highlight .preprocessor,
@@ -1366,10 +1366,10 @@ td {
 .highlight .params,
 .highlight .constant,
 .highlight .command {
-  color: #f78c6c;
+  color: #f99157;
 }
 .highlight .built_in {
-  color: #ffcb6b;
+  color: #ffd700;
 }
 .highlight .special,
 .highlight .formula,
@@ -1380,18 +1380,18 @@ td {
 .highlight .header,
 .highlight .regexp,
 .highlight .tag {
-  color: #c3e88d;
+  color: #5fb3b3;
 }
 .highlight .keyword,
 .highlight .title {
-  color: #89ddff;
+  color: #99c794;
 }
 .highlight .function,
 .highlight .title {
-  color: #82aaff;
+  color: #69c;
 }
 .highlight .comment {
-  color: #98a4d0;
+  color: #65737e;
 }
 .ruby .constant,
 .xml .tag .title,
@@ -1402,17 +1402,17 @@ td {
 .tag .name,
 .css .class,
 .css .pseudo {
-  color: #ff5370;
+  color: #ec5f67;
 }
 .ruby .class .title,
 .css .rules .attribute,
 .ruby .symbol,
 .xml .cdata {
-  color: #c3e88d;
+  color: #5fb3b3;
 }
 .css .hexcolor,
 .tag .string {
-  color: #89ddff;
+  color: #99c794;
 }
 .python .decorator,
 .python .title,
@@ -1422,17 +1422,17 @@ td {
 .javascript .title,
 .js .title,
 .coffeescript .title {
-  color: #82aaff;
+  color: #69c;
 }
 .tag .attr,
 .javascript .keyword,
 .javascript .function,
 .js .keyword,
 .js .function {
-  color: #c792ea;
+  color: #c594c5;
 }
 .diff .addition {
-  background-color: rgba(0,255,0,0.2);
+  background-color: rgba(155,185,85,0.4);
 }
 .diff .deletion {
   background-color: rgba(255,0,0,0.2);
@@ -1563,7 +1563,7 @@ td {
   cursor: pointer;
 }
 .copy-button i {
-  color: rgba(122,133,185,0.7);
+  color: rgba(248,248,242,0.6);
 }
 .sticky-top {
   position: absolute;
