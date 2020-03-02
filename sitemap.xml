@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamtaoxin.com/2018/02/06/app-shell-md/</loc>
+    
+    <lastmod>2020-03-02T04:59:23.699Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtaoxin.com/2018/03/14/house-tree-man/</loc>
+    
+    <lastmod>2020-03-02T04:59:10.432Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtaoxin.com/2018/05/17/arr-yes-or-no/</loc>
+    
+    <lastmod>2020-03-02T04:55:26.841Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtaoxin.com/2018/06/14/blockchain-note/</loc>
+    
+    <lastmod>2020-03-02T04:54:33.607Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtaoxin.com/2019/04/14/2019-books/</loc>
+    
+    <lastmod>2020-03-02T04:53:36.312Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamtaoxin.com/2019/10/29/these-years-first/</loc>
     
     <lastmod>2020-03-01T15:05:33.575Z</lastmod>
@@ -149,13 +184,6 @@
   </url>
   
   <url>
-    <loc>https://iamtaoxin.com/2018/03/14/house-tree-man/</loc>
-    
-    <lastmod>2019-10-29T06:48:20.873Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://iamtaoxin.com/2016/07/17/hexo%E4%BD%BF%E7%94%A8NexT%E4%B8%BB%E9%A2%98/</loc>
     
     <lastmod>2019-10-29T06:47:59.791Z</lastmod>
@@ -212,23 +240,9 @@
   </url>
   
   <url>
-    <loc>https://iamtaoxin.com/2018/06/14/blockchain-note/</loc>
-    
-    <lastmod>2019-10-29T06:45:35.544Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://iamtaoxin.com/2018/05/18/axios-post/</loc>
     
     <lastmod>2019-10-29T06:45:16.036Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iamtaoxin.com/2018/05/17/arr-yes-or-no/</loc>
-    
-    <lastmod>2019-10-29T06:45:08.331Z</lastmod>
     
   </url>
   
@@ -240,23 +254,9 @@
   </url>
   
   <url>
-    <loc>https://iamtaoxin.com/2019/04/14/2019-books/</loc>
-    
-    <lastmod>2019-10-29T06:43:48.917Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://iamtaoxin.com/2017/05/21/CentOS-%E5%AE%89%E8%A3%85Node-js%E3%80%81npm%E3%80%81htop%E3%80%81pm2/</loc>
     
     <lastmod>2019-10-29T06:37:14.356Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iamtaoxin.com/2018/02/06/app-shell-md/</loc>
-    
-    <lastmod>2019-10-29T06:36:32.458Z</lastmod>
     
   </url>
   
@@ -296,13 +296,6 @@
   </url>
   
   <url>
-    <loc>https://iamtaoxin.com/blogs/index.html</loc>
-    
-    <lastmod>2019-10-28T09:34:48.300Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://iamtaoxin.com/guestbook/index.html</loc>
     
     <lastmod>2019-10-28T09:34:48.300Z</lastmod>
@@ -310,14 +303,21 @@
   </url>
   
   <url>
-    <loc>https://iamtaoxin.com/archives/index.html</loc>
+    <loc>https://iamtaoxin.com/blogs/index.html</loc>
+    
+    <lastmod>2019-10-28T09:34:48.300Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtaoxin.com/about/index.html</loc>
     
     <lastmod>2019-10-28T09:34:48.299Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtaoxin.com/about/index.html</loc>
+    <loc>https://iamtaoxin.com/archives/index.html</loc>
     
     <lastmod>2019-10-28T09:34:48.299Z</lastmod>
     
