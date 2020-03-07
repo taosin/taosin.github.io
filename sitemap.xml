@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamtaoxin.com/2020/03/07/vue-run-time/</loc>
+    
+    <lastmod>2020-03-07T13:20:33.828Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamtaoxin.com/2020/03/02/daily-laught/</loc>
     
     <lastmod>2020-03-07T03:53:51.860Z</lastmod>
@@ -303,13 +310,6 @@
   </url>
   
   <url>
-    <loc>https://iamtaoxin.com/blogs/index.html</loc>
-    
-    <lastmod>2019-10-28T09:34:48.300Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://iamtaoxin.com/guestbook/index.html</loc>
     
     <lastmod>2019-10-28T09:34:48.300Z</lastmod>
@@ -318,6 +318,13 @@
   
   <url>
     <loc>https://iamtaoxin.com/categories/index.html</loc>
+    
+    <lastmod>2019-10-28T09:34:48.300Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtaoxin.com/blogs/index.html</loc>
     
     <lastmod>2019-10-28T09:34:48.300Z</lastmod>
     
