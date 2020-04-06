@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamtaoxin.com/"/>
-  <updated>2020-03-23T13:20:59.588Z</updated>
+  <updated>2020-04-06T13:09:41.277Z</updated>
   <id>https://iamtaoxin.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>喜欢一个人，就多让 Ta 微笑</title>
+    <link href="https://iamtaoxin.com/2020/04/06/luck-01/"/>
+    <id>https://iamtaoxin.com/2020/04/06/luck-01/</id>
+    <published>2020-04-06T13:05:10.000Z</published>
+    <updated>2020-04-06T13:09:41.277Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们终其一生，不就是为了遇见那个最值得的人么。</p><p><img src="http://images.iamtaoxin.com/mweb/2020-04-06-15861784987662%20.png" alt=""></p><p>越长大，越孤单，越很少能感受到真正的快乐，更多时候是在带着面具生活着，。微笑可能只是一种纯粹礼貌的表情，不带任何心情，那些单纯的快乐慢慢变成了奢望。</p><p>生活本就没有那么多快乐，生活本就需要我们去创造更多的快乐。</p><p>如果真正喜欢一个人，就多让 ta 微笑。</p><hr><p><img src="http://images.iamtaoxin.com/mweb/2020-04-06-15861784987682%20.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们终其一生，不就是为了遇见那个最值得的人么。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.iamtaoxin.com/mweb/2020-04-06-15861784987662%20.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;越长大，越孤单，越很少能感受
+      
+    
+    </summary>
+    
+    
+      <category term="人间值得" scheme="https://iamtaoxin.com/categories/%E4%BA%BA%E9%97%B4%E5%80%BC%E5%BE%97/"/>
+    
+    
+      <category term="人间值得" scheme="https://iamtaoxin.com/tags/%E4%BA%BA%E9%97%B4%E5%80%BC%E5%BE%97/"/>
+    
+  </entry>
   
   <entry>
     <title>Chrome80 跨域名登录失效的问题</title>
@@ -522,35 +550,6 @@
     
     
       <category term="踩过的坑" scheme="https://iamtaoxin.com/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>判断一个对象是否为数组</title>
-    <link href="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/"/>
-    <id>https://iamtaoxin.com/2018/05/17/arr-yes-or-no/</id>
-    <published>2018-05-17T09:57:07.000Z</published>
-    <updated>2020-03-02T04:55:26.841Z</updated>
-    
-    <content type="html"><![CDATA[<p>如何判断一个对象是不是 <strong>Array</strong></p><pre><code>1. `Array.isArrya(obj)` 调用数组的 `isArray` 方法 ;2. `obj instanceOf Array` 判断对象是否是 `Array` 的示例 ;3. `Object.prototype.toString.call(obj) ===‘[object Array]’`</code></pre><p><code>Object.prototype.toString</code> 方法会取得对象的一个内部属性 <code>［［Class］］</code> ，然后依据这个属性，返回一个类似于<code>［object Array］</code>的字符串作为结果，<code>call</code> 用来改变 <code>toString</code> 的 <code>this</code> 指向为待检测的对象</p><pre><code>4. 判断对象是否有push等数组的一些方法。（这个方法有兼容问题，但也是一个简单易用的方法）5. `obj.constructor===Array   //true`</code></pre><ul><li><strong>同理判断一个对象是否是函数</strong>：</li></ul><p><code>console.log(Object.prototype.toString.call(obj)===&#39;[object Function]&#39;) //true或false</code></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;如何判断一个对象是不是 &lt;strong&gt;Array&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1. `Array.isArrya(obj)` 调用数组的 `isArray` 方法 ;
-
-2. `obj instanceOf Array` 判断对象是否是 `Array`
-      
-    
-    </summary>
-    
-    
-      <category term="面试笔记" scheme="https://iamtaoxin.com/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="javascript" scheme="https://iamtaoxin.com/tags/javascript/"/>
     
   </entry>
   
